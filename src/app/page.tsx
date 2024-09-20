@@ -16,30 +16,32 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Aqui você adicionaria a lógica para processar o e-mail
     console.log("E-mail cadastrado:", email)
     setEmail("")
   }
 
   return (
-    <div className="min-h-screen bg-yellow-200 font-mono relative text-zinc-900">
+    <div className="min-h-screen bg-yellow-200 font-mono relative text-zinc-900 overflow-x-hidden">
       {/* Conteúdo */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-16">
         {/* Hero Section */}
-        <header className="text-center mb-16">
-          <h1 className="text-6xl font-bold mb-4">
+        <header className="text-center mb-8 md:mb-16 px-2">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Calculadora Freelance
           </h1>
-          <p className="text-2xl mb-8">
+          <p className="text-xl md:text-2xl mb-8">
             Precifique seus projetos com confiança e estilo!
           </p>
-          <Button asChild className="text-2xl px-8 py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <Button
+            asChild
+            className="text-lg md:text-2xl px-6 md:px-8 py-3 md:py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-md"
+          >
             <Link href={"/calculator"}>Experimente Agora!</Link>
           </Button>
         </header>
 
         {/* Benefícios */}
-        <section className="grid md:grid-cols-3 gap-8 mb-16">
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
           {[
             {
               title: "Cálculos Precisos",
@@ -56,20 +58,22 @@ export default function Home() {
           ].map((benefit, index) => (
             <div
               key={index}
-              className="bg-blue-500 p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg"
+              className="bg-blue-500 p-4 md:p-6 border-4 border-black shadow-md rounded-lg"
             >
-              <h3 className="text-2xl font-bold mb-2">{benefit.title}</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">
+                {benefit.title}
+              </h3>
               <p>{benefit.desc}</p>
             </div>
           ))}
         </section>
 
         {/* Como Funciona */}
-        <section className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">
+        <section className="mb-8 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
             Como Funciona
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {[
               {
                 step: 1,
@@ -86,21 +90,23 @@ export default function Home() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-green-300 p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg"
+                className="bg-green-300 p-4 md:p-6 border-4 border-black shadow-md rounded-lg"
               >
-                <div className="text-5xl font-bold mb-4">{item.step}</div>
-                <p className="text-xl">{item.desc}</p>
+                <div className="text-4xl md:text-5xl font-bold mb-4">
+                  {item.step}
+                </div>
+                <p className="text-lg md:text-xl">{item.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Depoimentos */}
-        <section className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">
+        <section className="mb-8 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
             O Que Dizem Nossos Usuários
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             {[
               {
                 name: "Ana Silva",
@@ -115,9 +121,9 @@ export default function Home() {
             ].map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-purple-300 p-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg flex flex-col justify-between"
+                className="bg-purple-300 p-4 md:p-6 border-4 border-black shadow-md rounded-lg flex flex-col justify-between"
               >
-                <p className="text-xl mb-4">"{testimonial.quote}"</p>
+                <p className="text-lg md:text-xl mb-4">"{testimonial.quote}"</p>
                 <p className="font-bold">- {testimonial.name}</p>
               </div>
             ))}
@@ -125,14 +131,14 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section className="mb-16">
-          <h2 className="text-4xl font-bold mb-8 text-center">
+        <section className="mb-8 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
             Perguntas Frequentes
           </h2>
           <Accordion
             type="single"
             collapsible
-            className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg"
+            className="bg-white border-4 border-black shadow-md rounded-lg"
           >
             {[
               {
@@ -149,25 +155,27 @@ export default function Home() {
               },
             ].map((faq, index) => (
               <AccordionItem value={`item-${index}`} key={index}>
-                <AccordionTrigger className="text-xl font-bold mx-4 my-1">
+                <AccordionTrigger className="text-lg md:text-xl font-bold mx-4 my-1">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-lg mx-4">{faq.a}</AccordionContent>
+                <AccordionContent className="text-base md:text-lg mx-4">
+                  {faq.a}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </section>
 
         {/* CTA Final */}
-        <section className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
+        <section className="text-center mb-8 md:mb-16 px-2">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Pronto para Revolucionar Sua Precificação?
           </h2>
-          <p className="text-2xl mb-8">
+          <p className="text-xl md:text-2xl mb-8">
             Junte-se a milhares de freelancers satisfeitos!
           </p>
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Input
                 type="email"
                 placeholder="Seu melhor e-mail"
@@ -178,7 +186,7 @@ export default function Home() {
               />
               <Button
                 type="submit"
-                className="bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-lg px-6"
+                className="bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-md text-lg px-6 py-4"
               >
                 Começar
               </Button>
@@ -188,10 +196,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="text-center">
-          <p>
-            &copy; 2024 Calculadora Freelance. Todos os direitos
-            reservados.
-          </p>
+          <p>&copy; 2024 Calculadora Freelance. Todos os direitos reservados.</p>
         </footer>
       </div>
     </div>

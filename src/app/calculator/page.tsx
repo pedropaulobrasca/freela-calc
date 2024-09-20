@@ -11,6 +11,9 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+// Importar os ícones do Feather Icons via react-icons
+import { FiCheck, FiTrash2 } from "react-icons/fi"
+
 interface Profile {
   monthlyIncome: number
   hoursPerDay: number
@@ -41,12 +44,12 @@ export default function Calculator() {
     isCompleted: false,
   })
 
-  // Set isMounted to true after component mounts
+  // Define isMounted como true após o componente montar
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
-  // Load data from localStorage after component mounts
+  // Carrega dados do localStorage após o componente montar
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedProfile = localStorage.getItem("profile")
@@ -70,14 +73,14 @@ export default function Calculator() {
     }
   }, [])
 
-  // Save profile to localStorage when it changes
+  // Salva o perfil no localStorage quando ele muda
   useEffect(() => {
     if (isMounted) {
       localStorage.setItem("profile", JSON.stringify(profile))
     }
   }, [profile, isMounted])
 
-  // Save jobs to localStorage when they change
+  // Salva os jobs no localStorage quando eles mudam
   useEffect(() => {
     if (isMounted) {
       localStorage.setItem("jobs", JSON.stringify(jobs))
@@ -113,7 +116,7 @@ export default function Calculator() {
 
   const hourlyRate = calculateHourlyRate()
 
-  // Render nothing on the server to prevent hydration mismatch
+  // Não renderiza nada no servidor para evitar erros de hidratação
   if (!isMounted) {
     return null
   }
@@ -271,34 +274,43 @@ export default function Calculator() {
                   return (
                     <li
                       key={index}
-                      className={`p-4 rounded-lg border-2 border-black shadow-md ${
+                      className={`relative p-4 rounded-lg border-2 border-black shadow-md ${
                         job.isCompleted ? "bg-gray-300" : "bg-white"
                       }`}
                     >
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-xl font-bold">{job.name}</h3>
-                        <div className="flex space-x-2">
-                          <Button
-                            onClick={() => toggleJobCompletion(index)}
-                            className={`px-2 py-1 text-sm border-2 border-black shadow-sm text-zinc-900 ${
-                              job.isCompleted
-                                ? "bg-green-500 hover:bg-green-600"
-                                : "bg-yellow-300 hover:bg-yellow-400"
-                            }`}
-                          >
-                            {job.isCompleted ? "Concluído" : "Marcar como Concluído"}
-                          </Button>
-                          <Button
-                            onClick={() => deleteJob(index)}
-                            className="px-2 py-1 text-sm bg-red-400 hover:bg-red-500 border-2 border-black shadow-sm text-zinc-900"
-                          >
-                            Excluir
-                          </Button>
-                        </div>
+                      {/* Botões posicionados no canto superior direito */}
+                      <div className="absolute top-2 right-2 flex space-x-1">
+                        <Button
+                          onClick={() => toggleJobCompletion(index)}
+                          aria-label={
+                            job.isCompleted
+                              ? "Marcar como não concluído"
+                              : "Marcar como concluído"
+                          }
+                          className={`p-1 border-2 border-black shadow-sm text-zinc-900 h-full ${
+                            job.isCompleted
+                              ? "bg-green-500 hover:bg-green-600"
+                              : "bg-yellow-300 hover:bg-yellow-400"
+                          }`}
+                        >
+                          <FiCheck size={16} />
+                        </Button>
+                        <Button
+                          onClick={() => deleteJob(index)}
+                          aria-label="Excluir job"
+                          className="p-1 bg-red-400 hover:bg-red-500 border-2 border-black shadow-sm text-zinc-900 h-full"
+                        >
+                          <FiTrash2 size={16} />
+                        </Button>
                       </div>
-                      <p>Prazo: {daysToComplete.toFixed(1)} dias</p>
-                      <p>Horas por dia: {job.hoursPerDay}h</p>
-                      <p>Valor: R$ {jobCost.toFixed(2)}</p>
+
+                      {/* Conteúdo do Job */}
+                      <div className="">
+                        <h3 className="text-xl font-bold mb-2 pr-16">{job.name}</h3>
+                        <p>Prazo: {daysToComplete.toFixed(1)} dias</p>
+                        <p>Horas por dia: {job.hoursPerDay}h</p>
+                        <p>Valor: R$ {jobCost.toFixed(2)}</p>
+                      </div>
                     </li>
                   )
                 })}
