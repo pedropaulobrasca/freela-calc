@@ -34,7 +34,7 @@ export default function Home() {
           </p>
           <Button
             asChild
-            className="text-lg md:text-2xl px-6 md:px-8 py-3 md:py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-md"
+            className="text-lg md:text-2xl px-6 md:px-8 py-3 md:py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]"
           >
             <Link href={"/calculator"}>Experimente Agora!</Link>
           </Button>
@@ -58,7 +58,7 @@ export default function Home() {
           ].map((benefit, index) => (
             <div
               key={index}
-              className="bg-blue-500 p-4 md:p-6 border-4 border-black shadow-md rounded-lg"
+              className="bg-blue-500 p-4 md:p-6 border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] rounded-lg"
             >
               <h3 className="text-xl md:text-2xl font-bold mb-2">
                 {benefit.title}
@@ -90,7 +90,7 @@ export default function Home() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-green-300 p-4 md:p-6 border-4 border-black shadow-md rounded-lg"
+                className="bg-green-300 p-4 md:p-6 border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] rounded-lg"
               >
                 <div className="text-4xl md:text-5xl font-bold mb-4">
                   {item.step}
@@ -121,7 +121,7 @@ export default function Home() {
             ].map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-purple-300 p-4 md:p-6 border-4 border-black shadow-md rounded-lg flex flex-col justify-between"
+                className="bg-purple-300 p-4 md:p-6 border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] rounded-lg flex flex-col justify-between"
               >
                 <p className="text-lg md:text-xl mb-4">"{testimonial.quote}"</p>
                 <p className="font-bold">- {testimonial.name}</p>
@@ -138,7 +138,7 @@ export default function Home() {
           <Accordion
             type="single"
             collapsible
-            className="bg-white border-4 border-black shadow-md rounded-lg"
+            className="bg-white border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] rounded-lg"
           >
             {[
               {
@@ -186,7 +186,7 @@ export default function Home() {
               />
               <Button
                 type="submit"
-                className="bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-md text-lg px-6 py-4"
+                className="bg-pink-500 hover:bg-pink-600 text-white font-bold border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] text-lg px-6 py-4"
               >
                 Começar
               </Button>

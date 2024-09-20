@@ -130,7 +130,7 @@ export default function Calculator() {
         </h1>
 
         {/* Perfil */}
-        <Card className="mb-8 bg-pink-300 border-4 border-black shadow-lg">
+        <Card className="mb-8 bg-pink-300 border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]">
           <CardHeader>
             <CardTitle className="text-2xl font-bold">Seu Perfil</CardTitle>
           </CardHeader>
@@ -200,7 +200,7 @@ export default function Calculator() {
         </Card>
 
         {/* Adicionar Novo Job */}
-        <Card className="mb-8 bg-blue-300 border-4 border-black shadow-lg">
+        <Card className="mb-8 bg-blue-300 border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]">
           <CardHeader>
             <CardTitle className="text-2xl font-bold">
               Adicionar Novo Job
@@ -251,7 +251,7 @@ export default function Calculator() {
             </div>
             <Button
               onClick={addJob}
-              className="w-full bg-green-400 hover:bg-green-500 text-black font-bold border-2 border-black shadow-md"
+              className="w-full bg-green-400 hover:bg-green-500 text-black font-bold border-2 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]"
             >
               Adicionar Job
             </Button>
@@ -259,7 +259,7 @@ export default function Calculator() {
         </Card>
 
         {/* Lista de Jobs */}
-        <Card className="bg-purple-300 border-4 border-black shadow-lg">
+        <Card className="bg-purple-300 border-4 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]">
           <CardHeader>
             <CardTitle className="text-2xl font-bold">Lista de Jobs</CardTitle>
           </CardHeader>
@@ -274,7 +274,7 @@ export default function Calculator() {
                   return (
                     <li
                       key={index}
-                      className={`relative p-4 rounded-lg border-2 border-black shadow-md ${
+                      className={`relative p-4 rounded-lg border-2 border-black shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] ${
                         job.isCompleted ? "bg-gray-300" : "bg-white"
                       }`}
                     >
@@ -306,7 +306,9 @@ export default function Calculator() {
 
                       {/* Conteúdo do Job */}
                       <div className="">
-                        <h3 className="text-xl font-bold mb-2 pr-16">{job.name}</h3>
+                        <h3 className="text-xl font-bold mb-2 pr-16">
+                          {job.name}
+                        </h3>
                         <p>Prazo: {daysToComplete.toFixed(1)} dias</p>
                         <p>Horas por dia: {job.hoursPerDay}h</p>
                         <p>Valor: R$ {jobCost.toFixed(2)}</p>
